@@ -192,10 +192,23 @@ if($result){
 }
 }
 function onclick_button_sendcommand {
+	$result = $null
+	$copycred = $null
+	$scripttext = $WPFtextbox_commandinput.Text
+	
+	if(($script:target_vms.GuestId).StartsWith("win") -eq $True){
+		$copycred = $script:connection_guestcredential.getNetworkCredential().domain + "\" + $script:connection_guestcredential.getNetworkCredential().username
+	}else{
+		$copycred = $script:connection_guestcredential.getNetworkCredential().username
+	}
+	write-host $scripttext
+	$result = Invoke-VMScript -ScriptText $scripttext -VM $script:target_vms -GuestUser $copycred -GuestPassword $script:connection_guestcredential.GetNetworkCredential().Password
+	$WPFtextbox_resultoutput.Text = $result
+}
 
 
 
-$WPFbutton_sendcommand.Add_Click({$script:command_restul = onclick_button_sendcommand})
+$WPFbutton_sendcommand.Add_Click({onclick_button_sendcommand})
 $WPFbutton_copytoguest.Add_Click({$script:file_move_result = copy-file-toguest})
 $WPFbutton_copytolocal.Add_Click({$script:file_move_result = copy-file-tolocal})
 $WPFbutton_setcredentials.Add_Click({onclick_button_setvcentercredentials})
