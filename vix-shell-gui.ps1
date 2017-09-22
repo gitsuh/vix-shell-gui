@@ -6,7 +6,7 @@ $inputXML = @"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:WpfApp1"
         mc:Ignorable="d"
-        Title="Virtual Shell" Height="458.197" Width="526.503">
+        Title="Virtual Shell" Height="480" Width="530">
     <Grid Margin="0,0,2,0">
         <TextBox x:Name="txtbox_vcentertarget" HorizontalAlignment="Left" Height="23" Margin="10,40,0,0" TextWrapping="Wrap" Text="vCenter" VerticalAlignment="Top" Width="306"/>
         <TextBox x:Name="textbox_vmtarget" HorizontalAlignment="Left" Height="23" Margin="10,96,0,0" TextWrapping="Wrap" Text="Virtual Machine Name" VerticalAlignment="Top" Width="306"/>
